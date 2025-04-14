@@ -5,9 +5,10 @@
         <title>
 COUNTRY FINDER
         </title>
-<link rel="stylesheet" href="css/style.css"
+<link rel="stylesheet" href="css/style.css" 
     </head>
     <body>
+<section>
 <h1> find my country</h1>
 <div class="container">
 <div class="search-wrapper">
@@ -17,9 +18,28 @@ COUNTRY FINDER
 </div>
 <div id="search_result">
     <image src="#" id="flag">
-        
-
+<h2>country: <span id="name"></span></h2>
+<h4>continent: <span id="continent"></span></h4>
+<h4>capital: <span id="capital"></span></h4>
+<h4>population: <span id="population"></span></h4>
+<h4>language: <span id="language"></span></h4>
+<h4>currency: <span id="currency"></span></h4>
 </div>
-<script src="script.js"></script>
+</section>
+<section>
+    <h3>guess the country</h3>
+    <div class="container">
+    <div class="search-wrapper">
+    <input type="text" id="countryinput" name="#" placeholder="enter your guess">
+    </div>
+    <div>
+<input type="text" id="guessinput" name="#" placeholder="submit guess">
+<button type="hint" id="search">hint</button>
+    </div>
+    <div>
+<input type="text" id="countryinput" name="#" placeholder="try another country">        
+    </div>
+</section>
+<script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>
