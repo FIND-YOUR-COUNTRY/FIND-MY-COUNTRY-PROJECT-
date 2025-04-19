@@ -1,36 +1,68 @@
-document.getElementById('search').addEventListener('click', function () {
-    const countryName = document.getElementById('countryinput').value.trim();
-    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
-        .then(response => response.json())
-        .then(data => {
-            const country = data[0];
-            document.getElementById('flag').src = country.flags.png; 
-            document.getElementById('name').textContent = country.name.common; 
-            document.getElementById('continent').textContent = country.region; 
-            document.getElementById('capital').textContent = country.capital[0]; 
-            document.getElementById('population').textContent = country.population.toLocaleString(); 
-            document.getElementById('language').textContent = Object.values(country.languages).join(', '); 
-            document.getElementById('currency').textContent = Object.values(country.currencies)[0].name;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Country not found. Please try again.');
-        });
-});
+// Function to fetch country data from a REST API
+async function fetchCountryData(countryName) {
+    try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+        if (!response.ok) throw new Error('Country not found');
+        const data = await response.json();
+        return data[0];
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+}
 
-document.getElementById('guessinput').addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-        const guess = event.target.value.toLowerCase();
-        const correctAnswer = 'kenya'; 
-        if (guess === correctAnswer) {
-            alert('Correct! You guessed the country.');
-        } else {
-            alert('Incorrect guess. Please try again!');
-        }
+// Event listener for the "search" button
+document.getElementById('searchBtn').addEventListener('click', async () => {
+    const countryName = document.getElementById('countrysearchinput').value;
+    if (!countryName) {
+        alert('Please enter a country name.');
+        return;
+    }
+    const countryData = await fetchCountryData(countryName);
+    if (countryData) {
+        document.getElementById('Flag').src = countryData.flags.svg;
+        document.getElementById('name').innerText = countryData.name.common;
+        document.getElementById('Continent').innerText = countryData.region;
+        document.getElementById('Capital').innerText = countryData.capital ? countryData.capital[0] : 'N/A';
+        document.getElementById('Population').innerText = countryData.population.toLocaleString();
+        document.getElementById('Language').innerText = Object.values(countryData.languages).join(', ');
+        document.getElementById('Currency').innerText = Object.keys(countryData.currencies).join(', ');
     }
 });
 
-document.getElementById('search').addEventListener('click', function () {
-    alert('Hint: The country is in East Africa!');
+// Function for the guessing game
+async function generateRandomCountry() {
+    const response = await fetch('https://restcountries.com/v3.1/all');
+    const countries = await response.json();
+    return countries[Math.floor(Math.random() * countries.length)];
+}
+
+let currentCountry;
+
+document.getElementById('guesscountryinput').addEventListener('click', () => {
+    const guess = document.getElementById('countryinput').value;
+    if (!guess) {
+        alert('Please enter your guess.');
+        return;
+    }
+    if (guess.toLowerCase() === currentCountry.name.common.toLowerCase()) {
+        alert('Correct! 🎉');
+    } else {
+        alert(`Wrong! The correct answer was ${currentCountry.name.common}.`);
+    }
 });
 
+document.getElementById('hintBtn').addEventListener('click', () => {
+    alert(`Hint: The country is located in ${currentCountry.region}.`);
+});
+
+document.getElementById('anothercountryinput').addEventListener('click', async () => {
+    currentCountry = await generateRandomCountry();
+    document.getElementById('flag').src = currentCountry.flags.svg;
+});
+
+// Initialize the guessing game
+(async () => {
+    currentCountry = await generateRandomCountry();
+    document.getElementById('flag').src = currentCountry.flags.svg;
+})();
