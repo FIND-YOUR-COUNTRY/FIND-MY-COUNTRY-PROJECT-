@@ -1,17 +1,25 @@
+.search-wrapper{background-color: lightblue;
+
+
+
+
+}
+
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
+    background-color: lightblue;
+    margin: 0px;
+    padding: 0px;
     text-align: center;
 }
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
+
 }
 input[type="text"] {
     width: 20%;
@@ -42,6 +50,7 @@ button:hover {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     max-width: 300px;
+
 }
 #search_result h2, #search_result h4 {
     margin: 8px 0;
@@ -52,20 +61,34 @@ button:hover {
     height: auto;
     margin-bottom: 15px;
     border-radius: 8px;
+   
 }
 section:nth-of-type(2) {
-    padding: 10px;
+    padding: 20px;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin: 10px auto;
-    max-width: 300px;
+    max-width: 600px;
 }
 section:nth-of-type(2) h3 {
     color: #333;
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
+#search_result{
+max-width: 600px;
+
+
+
+}
+
+h1{
+font: size 18rem;
+
+
+}
+
 #flag {
     max-width: 100%;
     height: auto;
@@ -74,7 +97,7 @@ section:nth-of-type(2) h3 {
     border: 2px solid #ddd;
 }
 #countryinput {
-    width: 70%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -97,3 +120,7 @@ section:nth-of-type(2) h3 {
 #hintBtn:hover,
 #anothercountryinput:hover {
     background-color: #005bb5;}
+
+   
+   
+
