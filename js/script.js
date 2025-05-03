@@ -17,6 +17,8 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
     if (!countryName) {
         alert('Please enter a country name.');
         return;
+
+        
     }
     const countryData = await fetchCountryData(countryName);
     if (countryData) {
@@ -27,7 +29,14 @@ document.getElementById('searchBtn').addEventListener('click', async () => {
         document.getElementById('Population').innerText = countryData.population.toLocaleString();
         document.getElementById('Language').innerText = Object.values(countryData.languages).join(', ');
         document.getElementById('Currency').innerText = Object.keys(countryData.currencies).join(', ');
+
+        
     }
+
+
+
+        
+  
 });
 
 // Function for the guessing game
