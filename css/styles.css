@@ -1,8 +1,5 @@
 .search-wrapper{background-color: white;
 
-
-
-
 }
 
 
@@ -147,4 +144,43 @@ font: size 18rem;
         font-size: 16px;
         color: #555;
     }
+    @media (max-width: 768px) {
+        .container,
+        section:nth-of-type(2),
+        #search_result {
+            padding: 15px;
+            margin: 10px;
+            max-width: 100%;
+        }
+    
+        input[type="text"],
+        #countryinput {
+            width: 90%;
+            margin: 10px auto;
+            display: block;
+        }
+    
+        button,
+        #guesscountryinput,
+        #hintBtn,
+        #anothercountryinput {
+            width: 90%;
+            margin: 10px auto;
+            display: block;
+        }
+    
+        h1 {
+            font-size: 1.5rem;
+        }
+    
+        section:nth-of-type(2) h3 {
+            font-size: 1.3rem;
+        }
+    
+        footer ul li {
+            display: block;
+            margin: 8px 0;
+        }
+    }
+    
 
